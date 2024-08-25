@@ -1,5 +1,6 @@
-import orjson
 from typing import Any
+
+import orjson
 from fastapi.responses import JSONResponse
 
 
