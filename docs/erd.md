@@ -8,6 +8,8 @@ erDiagram
   Text email
   Text password
   Timestamptz created_at
+  Timestamptz updated_at
+  Timestamptz deleted_at
 }
 
 "contents"{
@@ -15,10 +17,13 @@ erDiagram
   Text type "TEXT, FILE"
   Text data
   Bool llm_status
-  UUID user_Id FK
+  UUID user_id FK
   character-varying[] tag
   Text google_id
   Bool is_google_id
+  Timestamptz created_at
+  Timestamptz updated_at
+  Timestamptz deleted_at
 }
 
 "contents" }o--|| "users" :memo

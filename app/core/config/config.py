@@ -3,6 +3,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     DB_URL: str
+    API_MODE: str
 
 
-config = Settings().model_dump()
+config = Settings()
