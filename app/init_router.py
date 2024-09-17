@@ -1,9 +1,11 @@
 from fastapi import APIRouter
+from pydantic import BaseModel
 
+from app.api.v1.content_router import content_router
 from app.response.custom_response import CustomORJSONResponse
 
 
-class ErrorResponse:
+class ErrorResponse(BaseModel):
     code: str
     message: str
     data: dict | list | None
@@ -19,3 +21,5 @@ router = APIRouter(
         500: {"model": ErrorResponse},
     },
 )
+
+router.include_router(content_router, prefix="", tags=["content"])

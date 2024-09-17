@@ -11,13 +11,15 @@ from sqlalchemy import (
 )
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
-from sqlalchemy.sql import func
+from sqlalchemy.sql import func, text
 
 
 class Content(Base):
     __tablename__ = "contents"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = Column(
+        UUID(as_uuid=True), primary_key=True, server_default=text("uuid_generate_v4()")
+    )
     type = Column(String)
     data = Column(Text)
     llm_status = Column(Boolean)

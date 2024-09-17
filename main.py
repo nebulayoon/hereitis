@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-from app.api import router
+from app.init_router import router
 from app.core.config.config import config, Settings
 from app.core.db.session_maker import init_db
 import asyncio
