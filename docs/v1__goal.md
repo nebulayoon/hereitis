@@ -8,4 +8,20 @@
 
 # 인프라
 - 내 개인서버에 개발용이 자동 배포 될 것
+- 최소한의 운영비
 - 운영은 AWS 고려
+
+
+```mermaid
+---
+title: Architecture
+---
+flowchart
+  User
+  Scheduler
+
+  User -->|create_content| APIServer([APIServer])
+  APIServer --> DB([DB-PostgreSQL])
+  DB <--> Scheduler
+  Scheduler --> ChatGPT
+```
