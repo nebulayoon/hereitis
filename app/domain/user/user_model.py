@@ -1,3 +1,4 @@
+from pydantic import BaseModel, Field
 from app.core.db.session_maker import Base
 from sqlalchemy import (
     Column,
@@ -26,3 +27,15 @@ class User(Base):
     created_at = Column(DateTime(timezone=True), default=func.now())
     updated_at = Column(DateTime(timezone=True), default=func.now())
     deleted_at = Column(DateTime(timezone=True), nullable=True)
+
+
+class CreateUserRequestSchema(BaseModel):
+    email: str
+    password1: str
+    password2: str
+    name: str
+
+
+class LoginRequestSchema(BaseModel):
+    email: str
+    password: str
