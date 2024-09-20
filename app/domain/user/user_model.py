@@ -24,6 +24,8 @@ class User(Base):
     name = Column(Text)
     email = Column(Text)
     password = Column(Text)
+    google_id = Column(Text)
+    is_google_id = Column(Boolean)
     created_at = Column(DateTime(timezone=True), default=func.now())
     updated_at = Column(DateTime(timezone=True), default=func.now())
     deleted_at = Column(DateTime(timezone=True), nullable=True)

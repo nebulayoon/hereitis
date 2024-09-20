@@ -1,3 +1,5 @@
+from typing import List, Optional
+from pydantic import BaseModel
 from app.core.db.session_maker import Base
 from sqlalchemy import (
     Column,
@@ -24,10 +26,19 @@ class Content(Base):
     data = Column(Text)
     llm_status = Column(Boolean)
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"))
-    # user_id = Column(UUID(as_uuid=True))
     tag = Column(ARRAY(String))
-    google_id = Column(Text)
-    is_google_id = Column(Boolean)
     created_at = Column(DateTime(timezone=True), default=func.now())
     updated_at = Column(DateTime(timezone=True), default=func.now())
     deleted_at = Column(DateTime(timezone=True), nullable=True)
+
+
+class CreateContentRequestSchema(BaseModel):
+    data: str
+
+
+class CreateContentDTO(BaseModel):
+    type: str
+    data: str
+    llm_status: bool
+    user_id: uuid.UUID
+    tag: Optional[List[str]]
