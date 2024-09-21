@@ -1,18 +1,12 @@
-from pydantic import BaseModel, Field
-from app.core.db.session_maker import Base
-from sqlalchemy import (
-    Column,
-    ForeignKey,
-    Integer,
-    String,
-    Boolean,
-    ARRAY,
-    Text,
-    DateTime,
-)
-from sqlalchemy.sql import func, text
-from sqlalchemy.dialects.postgresql import UUID
 import uuid
+
+from pydantic import BaseModel, Field
+from sqlalchemy import (ARRAY, Boolean, Column, DateTime, ForeignKey, Integer,
+                        String, Text)
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.sql import func, text
+
+from app.core.db.session_maker import Base
 
 
 class User(Base):

@@ -10,3 +10,5 @@ psycopg
 psycopg[binary]
 passlib[bcrypt]
 python-jose
+openai
+APScheduler

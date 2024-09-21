@@ -1,12 +1,11 @@
-from sqlalchemy.orm import sessionmaker, declarative_base
-from app.core.config.config import config
-from sqlalchemy.ext.asyncio import (
-    create_async_engine,
-    AsyncSession,
-    async_scoped_session,
-)
-from typing import AsyncGenerator
 import asyncio
+from typing import AsyncGenerator
+
+from sqlalchemy.ext.asyncio import (AsyncSession, async_scoped_session,
+                                    create_async_engine)
+from sqlalchemy.orm import declarative_base, sessionmaker
+
+from app.core.config.config import config
 
 engine = create_async_engine(config.DB_URL, echo=True)
 

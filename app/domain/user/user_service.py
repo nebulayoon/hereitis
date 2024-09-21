@@ -1,16 +1,16 @@
 import uuid
 
-from app.domain.auth.auth_service import AuthService
-from app.domain.user.user_exception import (
-    UserExistsException,
-    PasswordDoesNotMatchException,
-    UserNotFoundException,
-    WrongEmailorPasswordException,
-)
-from app.domain.user.user_model import CreateUserRequestSchema, LoginRequestSchema, User
-from .user_repository import UserAlchemyRepository
-
 from passlib.context import CryptContext
+
+from app.domain.auth.auth_service import AuthService
+from app.domain.user.user_exception import (PasswordDoesNotMatchException,
+                                            UserExistsException,
+                                            UserNotFoundException,
+                                            WrongEmailorPasswordException)
+from app.domain.user.user_model import (CreateUserRequestSchema,
+                                        LoginRequestSchema, User)
+
+from .user_repository import UserAlchemyRepository
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

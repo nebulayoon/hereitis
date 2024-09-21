@@ -1,9 +1,10 @@
 import uuid
+from abc import ABC
 
 from sqlalchemy import and_, delete, or_, select, update
-from .user_model import User
 from sqlalchemy.ext.asyncio import async_scoped_session
-from abc import ABC
+
+from .user_model import User
 
 
 class BaseUserRepository(ABC):

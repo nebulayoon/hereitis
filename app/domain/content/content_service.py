@@ -1,9 +1,8 @@
 import uuid
 
-from app.domain.content.content_model import (
-    CreateContentDTO,
-    CreateContentRequestSchema,
-)
+from app.domain.content.content_model import (CreateContentDTO,
+                                              CreateContentRequestSchema)
+
 from .content_repository import ContentAlchemyRepository
 
 

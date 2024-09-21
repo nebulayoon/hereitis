@@ -1,8 +1,12 @@
 import uuid
-from sqlalchemy import and_, delete, or_, select, update
-from .content_model import Content, CreateContentDTO, CreateContentRequestSchema
-from sqlalchemy.ext.asyncio import async_scoped_session
 from abc import ABC
+from typing import List
+
+from sqlalchemy import and_, delete, or_, select, update
+from sqlalchemy.ext.asyncio import async_scoped_session
+
+from .content_model import (Content, CreateContentDTO,
+                            CreateContentRequestSchema)
 
 
 class BaseContentRepository(ABC):
@@ -29,6 +33,20 @@ class ContentAlchemyRepository(BaseContentRepository):
         result = await self.session.execute(query)
 
         return result.scalars().all()
+
+    async def get_queued_list(self):
+        query = (
+            select(Content)
+            .where(and_(Content.type == "text"))
+            .order_by(Content.created_at.desc())
+        )
+        result = await self.session.execute(query)
+
+        return result.scalars().all()
+
+    async def update_tags(self, content_id: uuid.UUID, tags: List):
+        query = update(Content).where(Content.id == content_id).values(tag=tags)
+        await self.session.execute(query)
 
     async def save(self, content_dto: CreateContentDTO):
         content = Content(

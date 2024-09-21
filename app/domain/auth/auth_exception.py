@@ -1,5 +1,6 @@
-from app.core.exception.custom_exception import CustomException
 from fastapi import status
+
+from app.core.exception.custom_exception import CustomException
 
 
 class NotValidateJWTTokenException(CustomException):

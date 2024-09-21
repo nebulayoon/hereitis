@@ -1,15 +1,15 @@
 import os
 import uuid
-from fastapi import APIRouter, Depends, File, Path, UploadFile
 
+from fastapi import APIRouter, Depends, File, Path, UploadFile
+from sqlalchemy.ext.asyncio import async_scoped_session
+
+from app.core.config.config import config
 from app.core.db.session_maker import get_db_session
 from app.domain.auth.auth_depends import auth_depends
 from app.domain.content.content_model import CreateContentRequestSchema
 from app.domain.content.content_repository import ContentAlchemyRepository
 from app.domain.content.content_service import ContentService
-from sqlalchemy.ext.asyncio import async_scoped_session
-from app.core.config.config import config
-
 
 content_router = APIRouter()
 

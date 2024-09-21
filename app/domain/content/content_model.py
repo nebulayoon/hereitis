@@ -1,19 +1,13 @@
-from typing import List, Optional
-from pydantic import BaseModel
-from app.core.db.session_maker import Base
-from sqlalchemy import (
-    Column,
-    ForeignKey,
-    Integer,
-    String,
-    Boolean,
-    ARRAY,
-    Text,
-    DateTime,
-)
-from sqlalchemy.dialects.postgresql import UUID
 import uuid
+from typing import List, Optional
+
+from pydantic import BaseModel
+from sqlalchemy import (ARRAY, Boolean, Column, DateTime, ForeignKey, Integer,
+                        String, Text)
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func, text
+
+from app.core.db.session_maker import Base
 
 
 class Content(Base):

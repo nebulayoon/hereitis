@@ -1,14 +1,15 @@
 import uuid
-from fastapi import APIRouter, Depends, Response
 
+from fastapi import APIRouter, Depends, Response
+from sqlalchemy.ext.asyncio import async_scoped_session
+
+from app.core.config.config import config
 from app.core.db.session_maker import get_db_session
-from app.domain.user.user_model import CreateUserRequestSchema, LoginRequestSchema
+from app.domain.user.user_exception import UserExistsException
+from app.domain.user.user_model import (CreateUserRequestSchema,
+                                        LoginRequestSchema)
 from app.domain.user.user_repository import UserAlchemyRepository
 from app.domain.user.user_service import UserService
-from sqlalchemy.ext.asyncio import async_scoped_session
-from app.domain.user.user_exception import UserExistsException
-from app.core.config.config import config
-
 
 user_router = APIRouter()
 
